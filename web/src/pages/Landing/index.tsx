@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo.svg";
@@ -9,8 +9,24 @@ import giveClassesIcon from "../../assets/images/icons/give-classes.svg";
 import purpleHeartIcon from "../../assets/images/icons/purple-heart.svg";
 
 import "./styles.css";
+import api from "../../services/api";
 
 function Landing() {
+  const [totalConnections, setTotalConnections] = useState(0);
+
+  // precisa disparar a requisição do total assim que abrir a page
+  // useEffectm, sempre que o segundo parametro mudar, ele vai chamar a função
+  // declarada no lado esquerdo
+  // mas nesse caso aqui, vamos deixar vazio para que execute apenas uma vez
+
+  useEffect(() => {
+    api.get("connections").then((response) => {
+      const { total } = response.data;
+
+      setTotalConnections(total);
+    });
+  }, []);
+
   return (
     <div id="page-landing">
       <div id="page-landing-content" className="container">
@@ -38,7 +54,7 @@ function Landing() {
         </div>
 
         <span className="total-connections">
-          Total de 200 conexões já realizadas{" "}
+          Total de {totalConnections} conexões já realizadas{" "}
           <img src={purpleHeartIcon} alt="Coração roxo" />
         </span>
       </div>
