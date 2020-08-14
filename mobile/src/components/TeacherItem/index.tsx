@@ -3,8 +3,9 @@ import { View, Image, Text } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 
 import heartOutlineIcon from "../../assets/images/icons/heart-outline.png";
-import unfavoriteIcon from "../../assets/images/icons/heart-outline.png";
+import unfavoriteIcon from "../../assets/images/icons/unfavorite.png";
 import whatsappIcon from "../../assets/images/icons/whatsapp.png";
+import StudyTabs from "../../routes/StudyTabs";
 
 import styles from "./styles";
 
@@ -38,8 +39,9 @@ function TeacherItem() {
         </Text>
 
         <View style={styles.buttonsContainer}>
-          <RectButton style={styles.favoritesButton}>
-            <Image source={heartOutlineIcon} />
+          <RectButton style={[styles.favoriteButton, styles.favorited]}>
+            {/*<Image source={heartOutlineIcon} /> */}
+            <Image source={unfavoriteIcon} />
           </RectButton>
 
           <RectButton style={styles.contactButton}>

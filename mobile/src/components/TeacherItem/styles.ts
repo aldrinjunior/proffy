@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
 
-  favoritesButton: {
+  favoriteButton: {
     backgroundColor: "#8257e5",
     width: 56,
     height: 56,
@@ -80,6 +80,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginRight: 8,
+  },
+
+  favorited: {
+    backgroundColor: "#e33d3d",
   },
 
   contactButton: {
